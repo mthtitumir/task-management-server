@@ -17,6 +17,9 @@ app.use(rateLimiter);
 app.get('/', (req, res)=>{
     res.status(200).send("Welcome to task-wave sever!")
 })
+app.get('/login', (req, res)=>{
+    res.status(200).send("Welcome to task-wave sever!")
+})
 
 
 
