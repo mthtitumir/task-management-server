@@ -11,6 +11,10 @@ const rateLimiter = rateLimit({
     message: "Too many request from this ip, please try again later!",
 })
 
+// router require start there
+const userRouter = require("./routers/userRouter")
+// router require end there
+
 // midlewers starting there
 app.use(morgan('dev'));
 app.use(cors())
@@ -18,8 +22,12 @@ app.use(bodyParser.json());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(rateLimiter);
-
 // midleware end there 
+
+
+// routes logic start there
+app.use("/api", userRouter)
+// routes logic end there
 
 // error handling midleware  start there 
 // this midleware for if anything bad request for any other routes
@@ -41,15 +49,7 @@ app.use((error, req, res, next) => {
 
 
 
-
-// routes logic start there
-const userRouter = require("./routers/userRouter")
-app.use("/user", userRouter)
-// routes logic end there
-
-
-
-// initial get there
+// initial get request there
 app.get('/', (req, res) => {
     res.status(200).send("Welcome to task-wave sever!")
 })

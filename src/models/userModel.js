@@ -4,7 +4,6 @@ const bcrypt = require("bcrypt");
 const userSchema = new Schema({
     userId: {
         type: String,
-        required: [true, 'user id is required!'],
         unique: true,
     },
     name: {
@@ -12,7 +11,7 @@ const userSchema = new Schema({
         required: [true, 'user name is required!'],
         trim: true,
         maxlength: [31, 'user name can be maximum 30 characters!'],
-        minlength: [31, 'user name can be maximum 3 characters!'],
+        minlength: [3, 'user name can be maximum 3 characters!'],
     },
     email: {
         type: String,
